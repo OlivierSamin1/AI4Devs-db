@@ -14,3 +14,9 @@ I want you to check @schema_updated.prisma  to ensure that:
 2. the normalization of the database is done
 If not fix it and rewrite the needed files 
 
+**Prompt 3**:
+from @schema_updated.prisma generate a new_ERD.mmd file and then write a script to populate the db with synthetic data for spanish company and spanish applicants.
+
+**Prompt 4**:
+from @schema_updated.prisma generate a new_ERD.mmd file and then write a script to populate the db with synthetic data for spanish company and spanish applicants.
+

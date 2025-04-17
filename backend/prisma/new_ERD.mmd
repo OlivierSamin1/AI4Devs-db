@@ -1,0 +1,137 @@
+erDiagram
+    CANDIDATE {
+        int id PK
+        string firstName
+        string lastName
+        string email
+        string phone
+        string address
+        datetime created_at
+        datetime updated_at
+    }
+    EDUCATION {
+        int id PK
+        string institution
+        string title
+        datetime start_date
+        datetime end_date
+        int candidate_id FK
+        datetime created_at
+        datetime updated_at
+    }
+    WORK_EXPERIENCE {
+        int id PK
+        string company
+        string position
+        string description
+        datetime start_date
+        datetime end_date
+        int candidate_id FK
+        datetime created_at
+        datetime updated_at
+    }
+    RESUME {
+        int id PK
+        string filePath
+        string fileType
+        datetime upload_date
+        int candidate_id FK
+        datetime created_at
+        datetime updated_at
+    }
+    COMPANY {
+        int id PK
+        string name
+        text description
+        datetime created_at
+        datetime updated_at
+    }
+    EMPLOYEE {
+        int id PK
+        int company_id FK
+        string name
+        string email
+        string role
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+    }
+    INTERVIEW_FLOW {
+        int id PK
+        string description
+        datetime created_at
+        datetime updated_at
+    }
+    INTERVIEW_TYPE {
+        int id PK
+        string name
+        text description
+        datetime created_at
+        datetime updated_at
+    }
+    INTERVIEW_STEP {
+        int id PK
+        int interview_flow_id FK
+        int interview_type_id FK
+        string name
+        int order_index
+        datetime created_at
+        datetime updated_at
+    }
+    POSITION {
+        int id PK
+        int company_id FK
+        int interview_flow_id FK
+        string title
+        text description
+        string status
+        boolean is_visible
+        string location
+        text job_description
+        text requirements
+        text responsibilities
+        decimal salary_min
+        decimal salary_max
+        string employment_type
+        text benefits
+        date application_deadline
+        string contact_info
+        datetime created_at
+        datetime updated_at
+    }
+    APPLICATION {
+        int id PK
+        int position_id FK
+        int candidate_id FK
+        datetime application_date
+        string status
+        text notes
+        datetime created_at
+        datetime updated_at
+    }
+    INTERVIEW {
+        int id PK
+        int application_id FK
+        int interview_step_id FK
+        int employee_id FK
+        datetime interview_date
+        string result
+        int score
+        text notes
+        datetime created_at
+        datetime updated_at
+    }
+
+    CANDIDATE ||--o{ EDUCATION : has
+    CANDIDATE ||--o{ WORK_EXPERIENCE : has
+    CANDIDATE ||--o{ RESUME : has
+    CANDIDATE ||--o{ APPLICATION : submits
+    COMPANY ||--o{ EMPLOYEE : employs
+    COMPANY ||--o{ POSITION : offers
+    INTERVIEW_FLOW ||--o{ INTERVIEW_STEP : contains
+    INTERVIEW_FLOW ||--o{ POSITION : assigned_to
+    INTERVIEW_TYPE ||--o{ INTERVIEW_STEP : used_in
+    POSITION ||--o{ APPLICATION : receives
+    APPLICATION ||--o{ INTERVIEW : schedules
+    INTERVIEW_STEP ||--o{ INTERVIEW : part_of
+    EMPLOYEE ||--o{ INTERVIEW : conducts 

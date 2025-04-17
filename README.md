@@ -59,7 +59,7 @@ npm install
 ```
 cd backend
 npm run build
-````
+```
 4. Start the backend server:
 ```
 cd backend
@@ -117,6 +117,13 @@ To generate the database using Prisma, follow these steps:
 ```
 npx prisma migrate dev
 ```
+
+4. To seed the database with sample data, run:
+```
+npm run prisma:seed
+```
+
+This will populate your database with sample companies, employees, interview flows, positions, candidates, and applications using the JavaScript seed file.
 
 Once you have completed all the steps, you should be able to save new candidates both via the web and the API, and see them in the database.
 
@@ -215,7 +222,7 @@ npm install
 ```
 cd backend
 npm run build
-````
+```
 4. Inicia el servidor backend:
 ```
 cd backend
@@ -270,6 +277,13 @@ Para generar la base de datos utilizando Prisma, sigue estos pasos:
 ```
 npx prisma migrate dev
 ```
+
+4. Para poblar la base de datos con datos de ejemplo, ejecuta:
+```
+npm run prisma:seed
+```
+
+Esto poblará tu base de datos con empresas, empleados, flujos de entrevista, posiciones, candidatos y solicitudes de ejemplo utilizando el archivo de semilla JavaScript.
 
 Una vez has dado todos los pasos, deberías poder guardar nuevos candidatos, tanto via web, como via API, y verlos en la base de datos.
 
